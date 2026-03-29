@@ -2,8 +2,8 @@
 """
 Historical Data Collector
 
-Fetches and stores historical stock data from Yahoo Finance.
-Supports Taiwan Stock Exchange (TWSE) stocks via Yahoo Finance API.
+Fetches and stores historical stock data from public Taiwan exchange data.
+Supports Taiwan Stock Exchange (TWSE) monthly price history.
 
 Usage:
     python data_collector.py --symbols 2330,2317,2454 --days 365
@@ -14,12 +14,15 @@ import argparse
 import logging
 import sqlite3
 import sys
+from datetime import timezone
 from datetime import datetime, timedelta
+from math import ceil
 from pathlib import Path
 from typing import List, Optional
 
 import pandas as pd
-import yfinance as yf
+import requests
+import urllib3
 
 from config import STOCK_UNIVERSE, ANALYSIS_CONFIG, DB_PATH
 
@@ -28,6 +31,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def init_database():
@@ -64,7 +68,7 @@ def init_database():
 
 def fetch_historical_data(symbol: str, days: int = 365) -> Optional[pd.DataFrame]:
     """
-    Fetch historical stock data from Yahoo Finance.
+    Fetch historical stock data from the TWSE monthly API.
     
     Parameters
     ----------
@@ -79,42 +83,78 @@ def fetch_historical_data(symbol: str, days: int = 365) -> Optional[pd.DataFrame
         DataFrame with OHLCV data
     """
     try:
-        # Yahoo Finance Taiwan stocks use .TW suffix
-        yf_symbol = f"{symbol}.TW" if not symbol.endswith('.TW') else symbol
-        
-        logger.info(f"Fetching {days} days of data for {symbol} ({yf_symbol})...")
-        
-        # Calculate date range
+        logger.info(f"Fetching {days} days of data for {symbol} from TWSE API...")
+
         end_date = datetime.now()
         start_date = end_date - timedelta(days=days)
-        
-        # Fetch data
-        ticker = yf.Ticker(yf_symbol)
-        df = ticker.history(start=start_date, end=end_date)
-        
-        if df.empty:
+
+        rows = []
+        month_cursor = datetime(end_date.year, end_date.month, 1)
+        months_to_fetch = max(2, ceil(days / 20) + 1)
+
+        for _ in range(months_to_fetch):
+            response = requests.get(
+                "https://www.twse.com.tw/rwd/en/afterTrading/STOCK_DAY",
+                params={
+                    "date": month_cursor.strftime("%Y%m%d"),
+                    "stockNo": symbol,
+                    "response": "json",
+                },
+                timeout=20,
+                verify=False,
+                headers={"User-Agent": "hello-bob-dashboard/1.0"},
+            )
+            response.raise_for_status()
+            payload = response.json()
+
+            if payload.get("stat") == "OK":
+                rows.extend(payload.get("data", []))
+
+            if month_cursor.month == 1:
+                month_cursor = datetime(month_cursor.year - 1, 12, 1)
+            else:
+                month_cursor = datetime(month_cursor.year, month_cursor.month - 1, 1)
+
+        if not rows:
             logger.warning(f"No data found for {symbol}")
             return None
-        
-        # Reset index to get date as column
-        df = df.reset_index()
-        df['Date'] = pd.to_datetime(df['Date'])
-        
-        # Rename columns to match our convention
-        df = df.rename(columns={
-            'Open': 'open',
-            'High': 'high',
-            'Low': 'low',
-            'Close': 'close',
-            'Adj_Close': 'adj_close',
-            'Volume': 'volume'
-        })
-        
-        # Add symbol column
-        df['symbol'] = symbol
-        
+
+        parsed_rows = []
+        for row in rows:
+            try:
+                trade_date = pd.to_datetime(row[0], format="%Y/%m/%d")
+                if trade_date < pd.Timestamp(start_date.date()):
+                    continue
+
+                open_price = float(row[3].replace(",", ""))
+                high_price = float(row[4].replace(",", ""))
+                low_price = float(row[5].replace(",", ""))
+                close_price = float(row[6].replace(",", ""))
+                volume = int(row[1].replace(",", ""))
+            except (IndexError, ValueError):
+                continue
+
+            parsed_rows.append(
+                {
+                    "symbol": symbol,
+                    "Date": trade_date,
+                    "open": open_price,
+                    "high": high_price,
+                    "low": low_price,
+                    "close": close_price,
+                    "adj_close": close_price,
+                    "volume": volume,
+                }
+            )
+
+        df = pd.DataFrame(parsed_rows).drop_duplicates(subset=["Date"]).sort_values("Date")
+
+        if df.empty:
+            logger.warning(f"No valid rows found for {symbol}")
+            return None
+
         logger.info(f"Fetched {len(df)} records for {symbol}")
-        return df[['symbol', 'Date', 'open', 'high', 'low', 'close', 'adj_close', 'volume']]
+        return df[["symbol", "Date", "open", "high", "low", "close", "adj_close", "volume"]]
         
     except Exception as e:
         logger.error(f"Error fetching data for {symbol}: {e}")
@@ -198,8 +238,8 @@ def get_historical_data(symbol: str, days: int = 365) -> Optional[pd.DataFrame]:
         logger.info(f"Retrieved {len(df)} records for {symbol} from database")
         return df
     
-    # Fetch from Yahoo Finance if not enough data
-    logger.info(f"Insufficient data in database, fetching from Yahoo Finance...")
+    # Fetch from remote market data API if not enough data
+    logger.info("Insufficient data in database, fetching from remote market data API...")
     df = fetch_historical_data(symbol, days)
     
     if df is not None:

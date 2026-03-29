@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bob Stock Trend Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Hello Bob</p>
+        <h1>Taiwan Stock Trend Dashboard</h1>
+        <p class="lede">A focused web view for daily stock movement, trend direction, and momentum signals pulled from the existing analysis pipeline.</p>
+      </section>
+
+      <section class="panel controls">
+        <div>
+          <label for="symbol-select">Stock</label>
+          <select id="symbol-select" name="symbol"></select>
+        </div>
+        <div>
+          <label for="days-select">Range</label>
+          <select id="days-select" name="days">
+            <option value="30">30 days</option>
+            <option value="90" selected>90 days</option>
+            <option value="180">180 days</option>
+            <option value="365">365 days</option>
+          </select>
+        </div>
+        <button id="refresh-button" type="button">Refresh Trend</button>
+      </section>
+
+      <section id="error-banner" class="panel error hidden"></section>
+
+      <section class="grid">
+        <article class="panel headline-card">
+          <div class="headline-top">
+            <div>
+              <p class="card-label">Selected Stock</p>
+              <h2 id="stock-title">Loading</h2>
+            </div>
+            <p id="updated-at" class="muted">Waiting for data</p>
+          </div>
+          <div class="headline-price">
+            <span id="latest-close">-</span>
+            <span id="day-change" class="pill neutral">No change</span>
+          </div>
+          <p id="trend-copy" class="headline-copy">Trend signal will appear here.</p>
+        </article>
+
+        <article class="panel stats">
+          <div class="stat-card">
+            <p class="card-label">20D Move</p>
+            <strong id="period-change">-</strong>
+          </div>
+          <div class="stat-card">
+            <p class="card-label">Momentum</p>
+            <strong id="momentum-status">-</strong>
+          </div>
+          <div class="stat-card">
+            <p class="card-label">RSI 14</p>
+            <strong id="rsi-value">-</strong>
+          </div>
+          <div class="stat-card">
+            <p class="card-label">Volume</p>
+            <strong id="volume-value">-</strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="chart-header">
+          <div>
+            <p class="card-label">Price Action</p>
+            <h3>Close vs. 20-day moving averages</h3>
+          </div>
+        </div>
+        <canvas id="trend-chart" aria-label="Stock trend chart"></canvas>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

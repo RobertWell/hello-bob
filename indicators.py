@@ -13,7 +13,6 @@ Design Principles:
 """
 
 import pandas as pd
-import pandas_ta as ta
 from typing import List, Optional
 
 
@@ -71,33 +70,45 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     for col in numeric_cols:
         if col in result.columns:
             result[col] = pd.to_numeric(result[col], errors='coerce')
+
+    close = result['close']
+    high = result['high']
+    low = result['low']
+    volume = result['volume']
     
     # ==================== TREND INDICATORS ====================
     # SMA (Simple Moving Average) - window=20
-    result['sma_20'] = ta.sma(result['close'], length=20)
+    result['sma_20'] = close.rolling(window=20, min_periods=20).mean()
     
     # EMA (Exponential Moving Average) - window=20
-    result['ema_20'] = ta.ema(result['close'], length=20)
+    result['ema_20'] = close.ewm(span=20, adjust=False, min_periods=20).mean()
     
     # ==================== MOMENTUM INDICATORS ====================
     # RSI (Relative Strength Index) - window=14
     # Formula: RSI = 100 - (100 / (1 + RS)), where RS = avg_gain / avg_loss
-    result['rsi_14'] = ta.rsi(result['close'], length=14)
+    delta = close.diff()
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.ewm(alpha=1/14, adjust=False, min_periods=14).mean()
+    avg_loss = loss.ewm(alpha=1/14, adjust=False, min_periods=14).mean()
+    rs = avg_gain / avg_loss
+    result['rsi_14'] = 100 - (100 / (1 + rs))
     
     # MACD (Moving Average Convergence Divergence)
     # MACD = EMA(12) - EMA(26), signal = EMA(macd, 9)
-    macd_result = ta.macd(result['close'], fast=12, slow=26, signal=9)
-    result['macd'] = macd_result['MACD_12_26_9']
-    result['macd_signal'] = macd_result['MACDs_12_26_9']
-    result['macd_hist'] = macd_result['MACDh_12_26_9']
+    ema_fast = close.ewm(span=12, adjust=False, min_periods=12).mean()
+    ema_slow = close.ewm(span=26, adjust=False, min_periods=26).mean()
+    result['macd'] = ema_fast - ema_slow
+    result['macd_signal'] = result['macd'].ewm(span=9, adjust=False, min_periods=9).mean()
+    result['macd_hist'] = result['macd'] - result['macd_signal']
     
     # ==================== VOLATILITY INDICATORS ====================
     # Bollinger Bands - window=20, std=2
     # Formula: BB = SMA ± 2 * rolling std
-    bb_result = ta.bbands(result['close'], length=20, std=2.0)
-    result['bb_lower'] = bb_result['BBL_20_2.0']
-    result['bb_middle'] = bb_result['BBM_20_2.0']
-    result['bb_upper'] = bb_result['BBU_20_2.0']
+    rolling_std = close.rolling(window=20, min_periods=20).std()
+    result['bb_middle'] = result['sma_20']
+    result['bb_upper'] = result['bb_middle'] + 2.0 * rolling_std
+    result['bb_lower'] = result['bb_middle'] - 2.0 * rolling_std
     
     # Bollinger Bands Width (normalized for ML)
     # Formula: (Upper - Lower) / Middle
@@ -105,22 +116,38 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     
     # ==================== VOLUME INDICATORS ====================
     # Volume SMA (20 periods)
-    result['volume_sma_20'] = ta.sma(result['volume'], length=20)
+    result['volume_sma_20'] = volume.rolling(window=20, min_periods=20).mean()
     
     # ==================== ADDITIONAL USEFUL INDICATORS ====================
     # ATR (Average True Range) - volatility measure
-    result['atr_14'] = ta.atr(result['high'], result['low'], result['close'], length=14)
+    prev_close = close.shift(1)
+    true_range = pd.concat(
+        [
+            (high - low),
+            (high - prev_close).abs(),
+            (low - prev_close).abs(),
+        ],
+        axis=1,
+    ).max(axis=1)
+    result['atr_14'] = true_range.ewm(alpha=1/14, adjust=False, min_periods=14).mean()
     
     # Stochastic Oscillator - momentum
-    stoch_result = ta.stoch(result['high'], result['low'], result['close'], k=14, d=3)
-    result['stoch_k'] = stoch_result['STOCHk_14_3_3']
-    result['stoch_d'] = stoch_result['STOCHd_14_3_3']
+    low_14 = low.rolling(window=14, min_periods=14).min()
+    high_14 = high.rolling(window=14, min_periods=14).max()
+    result['stoch_k'] = 100 * (close - low_14) / (high_14 - low_14)
+    result['stoch_d'] = result['stoch_k'].rolling(window=3, min_periods=3).mean()
     
     # CCI (Commodity Channel Index) - momentum
-    result['cci_20'] = ta.cci(result['high'], result['low'], result['close'], length=20)
+    typical_price = (high + low + close) / 3
+    tp_sma = typical_price.rolling(window=20, min_periods=20).mean()
+    mean_dev = typical_price.rolling(window=20, min_periods=20).apply(
+        lambda values: (abs(values - values.mean())).mean(),
+        raw=False,
+    )
+    result['cci_20'] = (typical_price - tp_sma) / (0.015 * mean_dev)
     
     # Williams %R - momentum
-    result['willr_14'] = ta.willr(result['high'], result['low'], result['close'], length=14)
+    result['willr_14'] = -100 * (high_14 - close) / (high_14 - low_14)
     
     # ==================== ML-FRIENDLY NORMALIZATION ====================
     # Price relative to moving average (normalized price)

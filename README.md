@@ -66,6 +66,14 @@ df_with_indicators = add_indicators(df)
 python update_market_sentiment.py
 ```
 
+### Launch The Trend Website
+
+```bash
+python app.py
+```
+
+Then open `http://127.0.0.1:8000` to view the stock trend dashboard.
+
 ## Project Structure
 
 ```
