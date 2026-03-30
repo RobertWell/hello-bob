@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""
-Minimal web dashboard for stock trend visualization.
-Uses only the Python standard library for serving HTTP.
+"""Stock dashboard entrypoint.
+
+Supports two execution modes:
+- `streamlit run app.py` renders the Streamlit dashboard used on this machine.
+- `python app.py` starts the lightweight HTTP server for direct local access.
 """
 
 from __future__ import annotations
@@ -12,10 +14,12 @@ from datetime import datetime
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from streamlit.runtime.scriptrunner import get_script_run_ctx
 from typing import Any, Dict
 from urllib.parse import parse_qs, urlparse
 
 import pandas as pd
+import streamlit as st
 
 from config import STOCK_UNIVERSE
 from data_collector import get_historical_data, init_database
@@ -104,6 +108,80 @@ def _build_stock_payload(symbol: str, days: int) -> Dict[str, Any]:
     }
 
 
+@st.cache_data(ttl=900, show_spinner=False)
+def _load_stock_payload(symbol: str, days: int) -> Dict[str, Any]:
+    return _build_stock_payload(symbol, days)
+
+
+def render_streamlit_dashboard() -> None:
+    st.set_page_config(
+        page_title="Hello Bob Dashboard",
+        page_icon=":chart_with_upwards_trend:",
+        layout="wide",
+    )
+
+    st.title("Hello Bob")
+    st.caption("Taiwan stock trend dashboard powered by Yahoo Finance data.")
+
+    symbols = list(STOCK_UNIVERSE.keys())
+    default_index = symbols.index(DEFAULT_SYMBOL) if DEFAULT_SYMBOL in STOCK_UNIVERSE else 0
+
+    with st.sidebar:
+        st.header("Controls")
+        symbol = st.selectbox(
+            "Symbol",
+            options=symbols,
+            index=default_index,
+            format_func=lambda code: f"{code} · {STOCK_UNIVERSE[code]}",
+        )
+        days = st.slider("History window", min_value=30, max_value=MAX_DAYS, value=DEFAULT_DAYS, step=30)
+        if st.button("Refresh data", use_container_width=True):
+            _load_stock_payload.clear()
+            st.rerun()
+
+    try:
+        with st.spinner("Loading market data..."):
+            payload = _load_stock_payload(symbol, days)
+    except Exception as exc:
+        st.error(f"Dashboard failed to load data: {exc}")
+        return
+
+    summary = payload["summary"]
+    series_df = pd.DataFrame(payload["series"])
+    series_df["date"] = pd.to_datetime(series_df["date"])
+    series_df = series_df.set_index("date")
+
+    st.subheader(f"{payload['symbol']} · {payload['name']}")
+    st.caption(f"Updated at {payload['updated_at']}")
+
+    metric_cols = st.columns(5)
+    metric_cols[0].metric("Latest Close", f"{summary['latest_close']:.2f}")
+    metric_cols[1].metric("Daily Change", f"{summary['change_amount']:+.2f}", f"{summary['change_pct']:+.2f}%")
+    metric_cols[2].metric("Window Return", f"{summary['period_change_pct']:+.2f}%")
+    metric_cols[3].metric("RSI 14", "N/A" if summary["rsi_14"] is None else f"{summary['rsi_14']:.2f}")
+    metric_cols[4].metric("Momentum", summary["momentum"] or "n/a")
+
+    chart_cols = st.columns([2, 1])
+    with chart_cols[0]:
+        st.markdown("#### Price Trend")
+        st.line_chart(series_df[["close", "sma20", "ema20"]], use_container_width=True)
+    with chart_cols[1]:
+        st.markdown("#### Trend Summary")
+        st.write(f"Direction: `{summary['trend_direction']}`")
+        st.write(f"Volume: `{summary['volume']}`")
+        last_row = series_df.iloc[-1]
+        st.write(f"SMA20: `{last_row['sma20']}`")
+        st.write(f"EMA20: `{last_row['ema20']}`")
+
+    st.markdown("#### Volume")
+    st.bar_chart(series_df[["volume"]], use_container_width=True)
+
+    with st.expander("Recent data"):
+        recent = series_df.tail(20).reset_index()
+        recent["date"] = recent["date"].dt.strftime("%Y-%m-%d")
+        st.dataframe(recent, use_container_width=True, hide_index=True)
+
+
 class StockDashboardHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
@@ -180,4 +258,7 @@ def run_server(host: str = "0.0.0.0", port: int = 8000) -> None:
 
 
 if __name__ == "__main__":
-    run_server()
+    if get_script_run_ctx() is not None:
+        render_streamlit_dashboard()
+    else:
+        run_server()

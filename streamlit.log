@@ -1,0 +1,372 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.28.165:8501
+  External URL: http://220.135.239.87:8501
+
+2026-03-29 12:30:03,294 - INFO - Database initialized
+2026-03-29 12:30:03,463 - INFO - Fetching 90 days of data for 2330 from Yahoo Finance...
+2026-03-29 12:30:03,858 - INFO - ✓ Fetched 90 rows for 2330
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-29 12:30:04.204 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:30:04.217 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:30:04.219 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:36:54,717 - INFO - Database initialized
+2026-03-29 12:36:54.825 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:36:54.839 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:36:54.841 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:38:28,327 - INFO - Database initialized
+2026-03-29 12:38:28.409 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:38:28.423 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:38:28.425 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:38:57,917 - INFO - Database initialized
+2026-03-29 12:38:57,921 - INFO - Fetching 60 days of data for 2330 from Yahoo Finance...
+2026-03-29 12:38:58,048 - INFO - ✓ Fetched 60 rows for 2330
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-29 12:38:58.164 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:38:58.177 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:38:58.180 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:39:10,789 - INFO - Database initialized
+2026-03-29 12:39:10.895 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:39:10.909 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:39:10.910 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:39:48,254 - INFO - Database initialized
+2026-03-29 12:39:48,333 - INFO - Database initialized
+2026-03-29 12:39:48,337 - INFO - Fetching 90 days of data for 2330 from Yahoo Finance...
+2026-03-29 12:39:48,464 - INFO - ✓ Fetched 90 rows for 2330
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-29 12:39:48.586 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:39:48.600 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:39:48.601 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:39:59,476 - INFO - Database initialized
+2026-03-29 12:39:59,479 - INFO - Fetching 90 days of data for 2399 from Yahoo Finance...
+2026-03-29 12:39:59,600 - INFO - ✓ Fetched 90 rows for 2399
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-29 12:39:59.724 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:39:59.737 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:39:59.739 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:40:00,456 - INFO - Database initialized
+2026-03-29 12:40:00,460 - INFO - Fetching 60 days of data for 2317 from Yahoo Finance...
+2026-03-29 12:40:00,599 - INFO - ✓ Fetched 60 rows for 2317
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-29 12:40:00.717 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:00.730 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:00.732 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:40:01,369 - INFO - Database initialized
+2026-03-29 12:40:01,373 - INFO - Fetching 90 days of data for 2408 from Yahoo Finance...
+2026-03-29 12:40:01,578 - INFO - ✓ Fetched 90 rows for 2408
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-29 12:40:01.701 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:01.713 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:01.715 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:40:05,570 - INFO - Database initialized
+2026-03-29 12:40:05.667 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:05.680 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:05.683 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:40:39,609 - INFO - Database initialized
+2026-03-29 12:40:39.707 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:39.721 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:40:39.723 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-29 12:41:30,960 - INFO - Database initialized
+2026-03-29 12:41:31.057 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:41:31.072 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-29 12:41:31.074 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 00:33:01,773 - INFO - Database initialized
+2026-03-30 00:33:01,780 - INFO - Fetching 90 days of data for 2330 from Yahoo Finance...
+2026-03-30 00:33:02,049 - INFO - ✓ Fetched 90 rows for 2330
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-30 00:33:02.150 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 00:33:02.165 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 00:33:02.166 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 00:56:48,311 - INFO - Database initialized
+2026-03-30 00:56:48,314 - INFO - Fetching 90 days of data for 2330 from Yahoo Finance...
+2026-03-30 00:56:48,601 - INFO - ✓ Fetched 90 rows for 2330
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-30 00:56:48.700 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 00:56:48.713 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 00:56:48.715 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 01:00:00,821 - INFO - Database initialized
+2026-03-30 01:00:00,825 - INFO - Fetching 90 days of data for 2414 from Yahoo Finance...
+2026-03-30 01:00:01,065 - INFO - ✓ Fetched 89 rows for 2414
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-30 01:00:01.188 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:00:01.201 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:00:01.203 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 01:00:02,993 - INFO - Database initialized
+2026-03-30 01:00:02,996 - INFO - Fetching 90 days of data for 2415 from Yahoo Finance...
+2026-03-30 01:00:03,405 - INFO - ✓ Fetched 89 rows for 2415
+/home/openclaw/.openclaw/workspace-stock/hello-bob/app.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+2026-03-30 01:00:03.541 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:00:03.557 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:00:03.559 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 01:02:28,673 - INFO - Database initialized
+2026-03-30 01:02:28.751 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:02:28.763 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:02:28.765 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 01:02:34,951 - INFO - Database initialized
+2026-03-30 01:02:35.025 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:02:35.038 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:02:35.040 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 01:04:22,208 - INFO - Database initialized
+2026-03-30 01:04:22.281 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:04:22.295 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:04:22.297 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 01:07:23,747 - INFO - Database initialized
+2026-03-30 01:07:23.820 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:07:23.834 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'` or specify an integer width.
+2026-03-30 01:07:23.836 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...

@@ -115,6 +115,11 @@ def fetch_historical_data(symbol: str, days: int = 365) -> Optional[pd.DataFrame
         logger.error(f"Error fetching data for {symbol}: {e}")
         return None
 
+
+def get_historical_data(symbol: str, days: int = 365) -> Optional[pd.DataFrame]:
+    """Backward-compatible alias used by the dashboard and reports."""
+    return fetch_historical_data(symbol, days)
+
 def store_data(df: pd.DataFrame, symbol: str):
     """Store data in database."""
     if df is None or df.empty:
