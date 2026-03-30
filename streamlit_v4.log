@@ -8,3 +8,90 @@ Collecting usage statistics. To deactivate, set browser.gatherUsageStats to fals
   Network URL: http://192.168.28.165:8501
   External URL: http://220.135.239.87:8501
 
+INFO:market_dashboard:✓ 取得 台灣50 (0050.TW) - 90 筆資料
+INFO:market_dashboard:✓ 取得 期加權 (006208.TW) - 90 筆資料
+INFO:market_dashboard:✓ 取得 加權指數 (^TWII) - 90 筆資料
+2026-03-30 03:19:41.299 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+INFO:commodities_analyzer:抓取 S&P 500...
+INFO:commodities_analyzer:抓取 Nasdaq 100...
+INFO:commodities_analyzer:抓取 黃金 (GC=F)...
+INFO:commodities_analyzer:抓取 白銀 (SI=F)...
+INFO:commodities_analyzer:抓取 Dow Jones...
+INFO:commodities_analyzer:抓取 原油 (CL=F)...
+INFO:commodities_analyzer:抓取 台股期...
+INFO:commodities_analyzer:抓取 布侖特原油 (BZ=F)...
+INFO:commodities_analyzer:抓取 天然氣 (NG=F)...
+INFO:commodities_analyzer:抓取 銅 (HG=F)...
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: TXF=TWO"}}}
+INFO:commodities_analyzer:抓取 小麥 (ZW=F)...
+INFO:commodities_analyzer:抓取 玉米 (ZC=F)...
+INFO:commodities_analyzer:抓取 黃豆 (ZS=F)...
+2026-03-30 03:19:44.095 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:19:44.156 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+ERROR:yfinance:$TXF=TWO: possibly delisted; no price data found  (period=90d) (Yahoo error = "No data found, symbol may be delisted")
+INFO:commodities_analyzer:抓取 日經 225...
+INFO:commodities_analyzer:抓取 德國 DAX...
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: FDAX=F"}}}
+ERROR:yfinance:$FDAX=F: possibly delisted; no price data found  (period=90d) (Yahoo error = "No data found, symbol may be delisted")
+INFO:commodities_analyzer:抓取 英國 FTSE...
+ERROR:yfinance:$FFI=F: possibly delisted; no price data found  (period=90d) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-30 03:20:00.585 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:00.598 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:20.613 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:20.619 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:20.624 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:20.630 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:20.635 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-30 03:20:23.760 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+INFO:market_dashboard:✓ 取得 台灣50 (0050.TW) - 90 筆資料
+INFO:market_dashboard:✓ 取得 期加權 (006208.TW) - 90 筆資料
+INFO:market_dashboard:✓ 取得 加權指數 (^TWII) - 90 筆資料
+2026-03-30 03:39:03.394 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.

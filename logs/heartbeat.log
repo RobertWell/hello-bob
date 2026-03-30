@@ -14,3 +14,7 @@ usage: daily_schedule.py [-h] [--run-all] [--morning] [--market-open]
                          [--midday] [--market-close] [--evening] [--collect]
                          [--report]
 daily_schedule.py: error: unrecognized arguments: --run-heartbeat
+usage: daily_schedule.py [-h] [--run-all] [--morning] [--market-open]
+                         [--midday] [--market-close] [--evening] [--collect]
+                         [--report]
+daily_schedule.py: error: unrecognized arguments: --run-heartbeat
