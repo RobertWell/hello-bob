@@ -131,11 +131,17 @@ def get_all_commodities_data(days: int = 90) -> Dict:
         logger.info(f"抓取 {name} ({symbol})...")
         df = fetch_commodity_data(symbol, days)
         if df is not None and not df.empty:
+            latest_row = df.iloc[-1]
+            latest_price = float(latest_row['close'])
+            change = 0
+            if len(df) > 1:
+                prev_close = float(df.iloc[-2]['close'])
+                change = (latest_price - prev_close) / prev_close * 100
             result[name] = {
                 'symbol': symbol,
                 'data': df,
-                'latest': df.iloc[-1] if not df.empty else None,
-                'change': (df.iloc[-1]['close'] - df.iloc[-2]['close']) / df.iloc[-2]['close'] * 100 if len(df) > 1 else 0
+                'latest': latest_price,
+                'change': change
             }
     return result
 
@@ -146,10 +152,16 @@ def get_all_futures_data(days: int = 90) -> Dict:
         logger.info(f"抓取 {name}...")
         df = fetch_future_data(name, days)
         if df is not None and not df.empty:
+            latest_row = df.iloc[-1]
+            latest_price = float(latest_row['close'])
+            change = 0
+            if len(df) > 1:
+                prev_close = float(df.iloc[-2]['close'])
+                change = (latest_price - prev_close) / prev_close * 100
             result[name] = {
                 'data': df,
-                'latest': df.iloc[-1] if not df.empty else None,
-                'change': (df.iloc[-1]['close'] - df.iloc[-2]['close']) / df.iloc[-2]['close'] * 100 if len(df) > 1 else 0
+                'latest': latest_price,
+                'change': change
             }
     return result
 

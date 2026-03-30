@@ -182,7 +182,14 @@ elif view_option == "📦 原物料期貨":
         for i, (name, info) in enumerate(commodities.items()):
             if i < 4:
                 change = info['change']
-                cols[i].metric(name, f"{info['latest']:.2f}", f"{change:+.2f}%")
+                latest_price = info['latest']
+                # 確保是單一數值
+                if hasattr(latest_price, 'iloc'):
+                    latest_price = latest_price.iloc[0] if hasattr(latest_price, 'iloc') else latest_price.values[0]
+                try:
+                    cols[i].metric(name, f"{latest_price:.2f}", f"{change:+.2f}%")
+                except:
+                    cols[i].metric(name, str(round(latest_price, 2)), f"{change:+.2f}%")
         
         st.markdown("---")
         
@@ -223,7 +230,14 @@ elif view_option == "🌍 全球期貨":
         for i, (name, info) in enumerate(futures.items()):
             if i < 4:
                 change = info['change']
-                cols[i].metric(name, f"{info['latest']:.2f}", f"{change:+.2f}%")
+                latest_price = info['latest']
+                # 確保是單一數值
+                if hasattr(latest_price, 'iloc'):
+                    latest_price = latest_price.iloc[0] if hasattr(latest_price, 'iloc') else latest_price.values[0]
+                try:
+                    cols[i].metric(name, f"{latest_price:.2f}", f"{change:+.2f}%")
+                except:
+                    cols[i].metric(name, str(round(latest_price, 2)), f"{change:+.2f}%")
         
         st.markdown("---")
         
